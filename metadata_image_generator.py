@@ -1,7 +1,8 @@
 import json
+from dotenv import dotenv_values
 
-IMAGES_BASE_URL = 'https://gateway.pinata.cloud/ipfs/QmdKWpQ6UReLMdQ7SckKExkRq4zWWi1B7T3mWEFv87bjWb'
-PROJECT_NAME = 'Massi NFT'
+IMAGES_BASE_URL = dotenv_values('.env')['IMAGES_BASE_URL']
+PROJECT_NAME = dotenv_values('.env')['PROJECT_NAME']
 
 
 def get_attribute(key, value):
@@ -18,7 +19,7 @@ def generate_metadata():
     for element in data:
         token_id = element['tokenId']
         token = {
-            "image": IMAGES_BASE_URL + str(token_id) + '.png',
+            "image": IMAGES_BASE_URL + '/' + str(token_id) + '.png',
             "tokenId": token_id,
             "name": PROJECT_NAME + ' ' + str(token_id),
             "attributes": []

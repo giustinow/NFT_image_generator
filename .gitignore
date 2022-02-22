@@ -1,3 +1,5 @@
 assets/*
 metadata/*
 output/*
+.env
+*.xml

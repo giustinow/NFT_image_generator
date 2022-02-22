@@ -1,12 +1,12 @@
 import random
-
 import image_generator
 import metadata_image_generator
 import metadata_traits_generator
 import traits
 import traits_count
+from dotenv import dotenv_values
 
-TOTAL_IMAGES = 10
+TOTAL_IMAGES = dotenv_values('.env')['TOTAL_IMAGES']
 all_images = []
 
 
@@ -35,7 +35,7 @@ def count_traits():
         traits_count.hat_count[image["Hat"]] += 1
 
 
-def main():
+def generate_images():
     for i in range(TOTAL_IMAGES):
         new_trait_image = create_new_image()
         all_images.append(new_trait_image)
@@ -46,11 +46,13 @@ def main():
         i += 1
     count_traits()
     image_generator.generate_images(all_images)
-
     metadata_traits_generator.generate_metadata(all_images)
+
+
+def generate_images_metadata():
     metadata_image_generator.generate_metadata()
 
 
 if __name__ == '__main__':
-    main()
-    pass
+    generate_image = True  # Flag to create image or metadata
+    # generate_images() if generate_image else generate_images_metadata()

@@ -9,8 +9,7 @@ except:
 
 
 def generate_images(all_images):
-    first_image = Image.open(f'./assets/body_parts/body/Transparent.png').convert(
-            'RGBA')
+    first_image = Image.open(f'./assets/body_parts/body/Transparent.png').convert('RGBA')
     print('BEGINNING IMAGE GENERATION', end='\n')
     for item in all_images:
         im1 = Image.open(f'./assets/body_parts/body/{traits_classification.body_files[item["Body"]]}.png').convert(
